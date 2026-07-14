@@ -1,12 +1,17 @@
+---
+import '@fontsource-variable/nunito-sans/wght.css';
+import '@fontsource-variable/cascadia-code/wght.css';
+import "../styles/global.css";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<link rel="icon" href="/src/assets/icoLight.png" type="image/svg+xml" media="(prefers-color-scheme: light)" />
+		<link rel="icon" href="/src/assets/icoDark.png" media="(prefers-color-scheme: dark)" />
+		<title>Nazaret | Portfolio</title>
 	</head>
 	<body>
 		<slot />
@@ -14,8 +19,7 @@
 </html>
 
 <style>
-	html,
-	body {
+	html {
 		margin: 0;
 		width: 100%;
 		height: 100%;
