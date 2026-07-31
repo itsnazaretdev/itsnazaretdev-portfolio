@@ -1,0 +1,19 @@
+---
+const { name, color, class: className } = Astro.props;
+---
+
+<button>{ name }</button>
+
+<style define:vars={{ color }}>
+    button {
+        padding: 0.6rem 1.2rem;
+        font-family: var(--cascadia);
+        border-radius: 0.3rem;
+        border: none;
+        background-color: var(--color);
+    }
+
+    .btn-project {
+        color: white;
+    }
+</style>

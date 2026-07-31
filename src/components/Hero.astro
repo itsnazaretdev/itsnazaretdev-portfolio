@@ -1,0 +1,71 @@
+---
+import Pill from "./Pill.astro"
+import Button from "./Button.astro"
+---
+
+<section>
+    <img src="/src/assets/logo.png" alt="Imagen estilo dibujo personal">
+
+    <div class="info">
+        <h3>registro 01 — desarrolladora daw</h3>
+        <h1>Nazaret</h1>
+        <p>Construyo aplicaciones con la misma atencion al detalle con la que organizo una estanteria: cada pieza en su sitio, cada dato con su etiqueta.</p>
+        
+        <div class="stack-container">
+            <Pill name="Java" color="#c7f4ff" />
+            <Pill name="SQL" color="#e5ffc7" />
+            <Pill name="JavaScript" color="#fff1c7" />
+        </div>
+
+        <div class="btns">
+            <Button name="Ver proyectos ->" color="#000" class="btn-project"/>
+            <Button name="Contacto" color="#ededed" />
+        </div>
+    </div>
+    
+
+</section>
+
+<style>
+    section {
+        width: 50%;
+        margin: 15% auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    h3 {
+        font-family: var(--cascadia);
+        font-weight: 100;
+        font-size: var(--text);
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    p {
+        width: 30rem;
+    }
+    
+    .stack-container {
+        width: 15rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    img {
+        width: 16rem;
+        object-fit: cover;
+    }
+
+    .btns {
+        display: flex;
+        gap: 1rem;
+    }
+</style>
