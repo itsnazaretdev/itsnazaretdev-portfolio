@@ -12,14 +12,14 @@ import Button from "./Button.astro"
         <p>Construyo aplicaciones con la misma atencion al detalle con la que organizo una estanteria: cada pieza en su sitio, cada dato con su etiqueta.</p>
         
         <div class="stack-container">
-            <Pill name="Java" color="#c7f4ff" />
-            <Pill name="SQL" color="#e5ffc7" />
-            <Pill name="JavaScript" color="#fff1c7" />
+            <Pill name="Java"/>
+            <Pill name="SQL" />
+            <Pill name="JavaScript" />
         </div>
 
         <div class="btns">
-            <Button name="Ver proyectos ->" color="#000" class="btn-project"/>
-            <Button name="Contacto" color="#ededed" />
+            <Button name="Ver proyectos ->" class="btn-project"/>
+            <Button name="Contacto" class="btn-contact"/>
         </div>
     </div>
     
@@ -29,19 +29,20 @@ import Button from "./Button.astro"
 <style>
     section {
         width: 50%;
-        margin: 15% auto;
+        height: 100vh;
+        margin: -4rem auto;
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 4rem;
     }
-
+    
     h3 {
         font-family: var(--cascadia);
         font-weight: 100;
         font-size: var(--text);
     }
-
+    
     .info {
         display: flex;
         flex-direction: column;

@@ -2,7 +2,7 @@
 const { name, color, class: className } = Astro.props;
 ---
 
-<button>{ name }</button>
+<button class={className}>{ name }</button>
 
 <style define:vars={{ color }}>
     button {
@@ -10,10 +10,15 @@ const { name, color, class: className } = Astro.props;
         font-family: var(--cascadia);
         border-radius: 0.3rem;
         border: none;
-        background-color: var(--color);
     }
-
+    
     .btn-project {
         color: white;
+        background-color: #000;
+    }
+
+    .btn-contact {
+        color: black;
+        background-color: #ededed;
     }
 </style>

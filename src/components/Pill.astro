@@ -1,10 +1,29 @@
 ---
-const { name, color = "#3b82f6" } = Astro.props;
+const { name, color } = Astro.props;
+
+const defaultColors = {
+  javascript: "#fff1c7",
+  java: "#c7f4ff",
+  python: "#3776ab",
+  sql: "#e5ffc7",
+  react: "#61dafb",
+  node: "#6cc24a",
+  html: "#e34f26",
+  css: "#264de4",
+  typescript: "#3178c6",
+  api: "#10b981",
+  "api rest": "#10b981",
+  swing: "#7c3aed",
+  opencv: "#3776ab"
+};
+
+const key = typeof name === "string" ? name.toLowerCase().trim() : "";
+const pillColor = color ?? defaultColors[key as keyof typeof defaultColors] ?? "#3b82f6";
 ---
 
 <span class="pill">{ name }</span>
 
-<style define:vars={{ color }}>
+<style define:vars={{ color: pillColor }}>
     .pill {
         font-family: var(--cascadia);
         font-size: var(--text);
