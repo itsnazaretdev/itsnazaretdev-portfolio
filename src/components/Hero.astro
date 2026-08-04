@@ -18,8 +18,8 @@ import Button from "./Button.astro"
         </div>
 
         <div class="btns">
-            <Button name="Ver proyectos ->" class="btn-project"/>
-            <Button name="Contacto" class="btn-contact"/>
+            <a href=""><Button name="Ver proyectos ->" class="btn-project"/></a>
+            <a href=""><Button name="Contacto" class="btn-contact"/></a>
         </div>
     </div>
     
@@ -30,7 +30,8 @@ import Button from "./Button.astro"
     section {
         width: 50%;
         height: 100vh;
-        margin: -4rem auto;
+        margin: 0 auto;
+        padding-bottom: 4rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -40,7 +41,7 @@ import Button from "./Button.astro"
     h3 {
         font-family: var(--cascadia);
         font-weight: 100;
-        font-size: var(--text);
+        font-size: var(--h3);
     }
     
     .info {

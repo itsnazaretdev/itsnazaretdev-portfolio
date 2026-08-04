@@ -1,10 +1,10 @@
 ---
-const { name, color, class: className } = Astro.props;
+const { name, class: className } = Astro.props;
 ---
 
 <button class={className}>{ name }</button>
 
-<style define:vars={{ color }}>
+<style is:global>
     button {
         padding: 0.6rem 1.2rem;
         font-family: var(--cascadia);
