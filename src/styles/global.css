@@ -1,10 +1,6 @@
 :root {
 --h1: clamp(2.3rem, 6vw, 4rem);
-
-  /* H2: En móvil se verá a 1.8rem y en PC a 3rem */
-  --h2: clamp(1.8rem, 4.5vw, 3rem);
-
-  /* H3: En móvil a 1.05rem y en PC a 1.2rem */
+  --h2: clamp(1.4rem, 3vw, 2.4rem);
   --h3: clamp(1.05rem, 2vw, 1.2rem);
   --btn-theme: clamp(1.1rem, 1.2vw, 1.2rem);
   --text: clamp(0.9rem, 0.95vw, 0.95rem);
@@ -41,4 +37,9 @@ h3 {
 p,
 li {
   font-size: var(--text);
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

@@ -3,7 +3,7 @@ import { projects } from '../data/projects.js';
 import CardProject from './CardProject.astro';
 ---
 
-<section>
+<section id="projects">
   <ol class="cards">
     {projects.map((p, index) => (
       <CardProject {...p} style={`--card-index: ${index};`} />
