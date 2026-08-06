@@ -1,36 +1,29 @@
 ---
 const { name, color } = Astro.props;
 
-const defaultColors = {
-  javascript: "#fff1c7",
-  java: "#c7f4ff",
- python: "#b3c8de",
-  sql: "#e2f7cf",
-  react: "#beeffd",
-  node: "#c1edaf",
-  html: "#fbc3b5",
-  css: "#b8c4f8",
-  typescript: "#abcbf2",
-  api: "#9eeed6",
-  "api rest": "#9eeed6",
-  swing: "#d7c0fb",
-  opencv: "#a1cadf"
-};
-
-const key = typeof name === "string" ? name.toLowerCase().trim() : "";
-const pillColor = color ?? defaultColors[key as keyof typeof defaultColors] ?? "#3b82f6";
+const key = typeof name === "string" ? name.toLowerCase().trim().replace(/\s+/g, "") : "";
 ---
 
-<span class="pill">{ name }</span>
+<span class="pill" style={color ? `--pill-bg: ${color}; --pill-text: hsl(from ${color} h s 20%)` : ""} data-key={key}>{name}</span>
 
-<style define:vars={{ color: pillColor }}>
-    .pill {
-        font-family: var(--cascadia);
-        font-size: var(--text);
-        border-radius: 0.8rem;
-        padding: 0.2rem 0.6rem;
-        background-color: var(--color);
-        color: hsl(from var(--color) h s 20%);
-    }
+<style>
+  .pill {
+    font-family: var(--cascadia);
+    font-size: var(--text);
+    border-radius: 0.8rem;
+    padding: 0.2rem 0.6rem;
+    background-color: var(--pill-bg, var(--pill-java-bg));
+    color: var(--pill-text, var(--pill-java-text));
+  }
 
+  .pill[data-key="java"] { --pill-bg: var(--pill-java-bg); --pill-text: var(--pill-java-text); }
+  .pill[data-key="javascript"] { --pill-bg: var(--pill-javascript-bg); --pill-text: var(--pill-javascript-text); }
+  .pill[data-key="python"] { --pill-bg: var(--pill-python-bg); --pill-text: var(--pill-python-text); }
+  .pill[data-key="sql"] { --pill-bg: var(--pill-sql-bg); --pill-text: var(--pill-sql-text); }
+  .pill[data-key="swing"] { --pill-bg: var(--pill-swing-bg); --pill-text: var(--pill-swing-text); }
+  .pill[data-key="opencv"] { --pill-bg: var(--pill-opencv-bg); --pill-text: var(--pill-opencv-text); }
+  .pill[data-key="mediapipe"] { --pill-bg: var(--pill-mediapipe-bg); --pill-text: var(--pill-mediapipe-text); }
+  .pill[data-key="mariadb"] { --pill-bg: var(--pill-mariadb-bg); --pill-text: var(--pill-mariadb-text); }
+  .pill[data-key="git"] { --pill-bg: var(--pill-git-bg); --pill-text: var(--pill-git-text); }
+  .pill[data-key="figma"] { --pill-bg: var(--pill-figma-bg); --pill-text: var(--pill-figma-text); }
 </style>

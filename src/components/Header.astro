@@ -1,7 +1,7 @@
 
 <header>
-    <img src="/src/assets/icoLight.png" alt="Logo portfolio NZ" class="logo-light">
-    <img src="/src/assets/icoDark.png" alt="Logo portfolio NZ" class="logo-dark">
+    <a href="#hero"><img src="/src/assets/icoLight.png" alt="Logo portfolio NZ" class="logo-light"></a>
+    <a href="#hero"><img src="/src/assets/icoDark.png" alt="Logo portfolio NZ" class="logo-dark"></a>
 
     <nav>
         <ul>
@@ -15,7 +15,6 @@
     <button>⏾</button>
 </header>
 
-
 <style>
     header {
         width: 100%;
@@ -24,10 +23,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-bottom: 1px solid #e8e8e8;
-        position: sticky;
+        position: fixed;
         top: 0;
-        background-color: white;
+        left: 0;
+        color: var(--text-primary);
+        z-index: 1;
+        backdrop-filter: blur(12px);
+        transition: transform 0.3s ease;
+    }
+
+    header.hidden {
+        transform: translateY(-100%);
     }
 
     .logo-dark {
@@ -61,6 +67,7 @@
     li {
         font-family: var(--cascadia);
         font-size: var(--text);
+        color: var(--text-primary);
     }
 
     button {
@@ -75,15 +82,37 @@
 </style>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const button = document.querySelector("button");
+   document.addEventListener("DOMContentLoaded", () => {
+    const button = document.querySelector("button");
+    const header = document.querySelector("header");
 
-        if (button) {
-            button.addEventListener("click", () => {
-                const isDark = document.documentElement.classList.toggle("dark");
+    if (button) {
+        button.addEventListener("click", () => {
+            const isDark = document.documentElement.classList.toggle("dark");
+            button.textContent = isDark ? "☀︎" : "⏾";
+        });
+    }
 
-                button.textContent = isDark ? "☀︎" : "⏾";
-            });
-        }
-    });
+    if (header) {
+        let lastScroll = 0;
+
+        window.addEventListener(
+            "scroll",
+            () => {
+                const currentScroll = window.scrollY;
+
+                if (currentScroll < 80) {
+                    header.classList.remove("hidden");
+                } else if (currentScroll > lastScroll) {
+                    header.classList.add("hidden");
+                } else {
+                    header.classList.remove("hidden");
+                }
+
+                lastScroll = currentScroll;
+            },
+            { passive: true }
+        );
+    }
+});
 </script>

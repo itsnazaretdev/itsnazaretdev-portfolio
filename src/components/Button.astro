@@ -13,12 +13,14 @@ const { name, class: className } = Astro.props;
     }
     
     .btn-project {
-        color: white;
-        background-color: #000;
+        color: var(--bg-color);
+        background-color: var(--text-primary);
+        border: 1px solid var(--border);
     }
 
     .btn-contact {
-        color: black;
-        background-color: #ededed;
+        color: var(--text-primary);
+        background-color: var(--surface);
+        border: 1px solid var(--border);
     }
 </style>

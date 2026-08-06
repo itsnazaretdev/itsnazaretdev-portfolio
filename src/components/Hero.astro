@@ -1,25 +1,18 @@
 ---
-import Pill from "./Pill.astro"
 import Button from "./Button.astro"
 ---
 
-<section>
-    <img src="/src/assets/logo.png" alt="Imagen estilo dibujo personal">
+<section id="hero">
+    <img class="animate-slide-in-top" src="/src/assets/logo.png" alt="Personal image">
 
     <div class="info">
         <h3>registro 01 — desarrolladora daw</h3>
-        <h1>Nazaret</h1>
-        <p>Construyo aplicaciones con la misma atencion al detalle con la que organizo una estanteria: cada pieza en su sitio, cada dato con su etiqueta.</p>
+        <h1 class="animate-blurred-fade-in">Nazaret</h1>
+        <p class="animate-blurred-fade-in delay-200">Construyo aplicaciones con la misma atencion al detalle con la que organizo una estanteria: cada pieza en su sitio, cada dato con su etiqueta.</p>
         
-        <div class="stack-container">
-            <Pill name="Java"/>
-            <Pill name="SQL" />
-            <Pill name="JavaScript" />
-        </div>
-
-        <div class="btns">
-            <a href=""><Button name="Ver proyectos ->" class="btn-project"/></a>
-            <a href=""><Button name="Contacto" class="btn-contact"/></a>
+        <div class="btns animate-blurred-fade-in delay-400">
+            <a href="#projects"><Button name="Ver proyectos ->" class="btn-project"/></a>
+            <a href="#contact"><Button name="Contacto" class="btn-contact"/></a>
         </div>
     </div>
     

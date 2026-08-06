@@ -1,5 +1,5 @@
 :root {
---h1: clamp(2.3rem, 6vw, 4rem);
+  --h1: clamp(2.3rem, 6vw, 4rem);
   --h2: clamp(1.4rem, 3vw, 2.4rem);
   --h3: clamp(1.05rem, 2vw, 1.2rem);
   --btn-theme: clamp(1.1rem, 1.2vw, 1.2rem);
@@ -8,6 +8,69 @@
   --cascadia: 'Cascadia Code Variable', sans-serif;
   --nunito: "Nunito Sans Variable", sans-serif;
 
+  --surface: #f1f1f1;
+  --surface-hover: #f2f2f2;
+  --border: #e5e5e5;
+  --border-strong: #d4d4d4;
+  --text-primary: #171717;
+  --text-secondary: #525252;
+  --text-muted: #a3a3a3;
+  --shadow-color: #0000004d;
+
+  /* Light theme */
+  --pill-java-bg: #e1f5ee;       --pill-java-text: #085041;
+  --pill-javascript-bg: #fbeaf0; --pill-javascript-text: #72243e;
+  --pill-python-bg: #eeedfe;     --pill-python-text: #3c3489;
+  --pill-sql-bg: #faeeda;        --pill-sql-text: #633806;
+  --pill-swing-bg: #f0edfb;      --pill-swing-text: #4a3d8f;
+  --pill-opencv-bg: #e4f2fa;     --pill-opencv-text: #1c5c80;
+  --pill-mediapipe-bg: #e3f7ea;  --pill-mediapipe-text: #1f6b3d;
+  --pill-mariadb-bg: #faf0e4;    --pill-mariadb-text: #6b4419;
+  --pill-git-bg: #eeeeee;        --pill-git-text: #4a4a4a;
+  --pill-figma-bg: #fbeaf0;      --pill-figma-text: #72243e;
+
+  /* Background */
+--bg-color: #f5f5f5;
+  /* legacy aliases used by layout and other files */
+  --glow-color: rgba(43, 40, 188, 0.3); /* Morado sutil */
+  --glow-fade: rgba(255, 255, 255, 0);
+
+  
+}
+
+/* Dark theme */
+.dark {
+  --surface: #212531;         /* fondo de cards, un escalón más claro */
+  --surface-hover: #1c1c1f; /* hover de cards/elementos interactivos */
+  --border: #232326; /* bordes sutiles */
+  --border-strong: #303033; /* bordes con más presencia, dividers */
+  --text-primary: #f4f4f5; /* texto principal, blanco roto, no puro */
+  --text-secondary: #a1a1aa;/* párrafos, descripciones */
+  --text-muted: #63636b;/* metadata, labels discretos */
+  --shadow-color: rgba(0, 0, 0, 0.516);/* para sombras/glow sutiles en hover */
+
+  --pill-java-bg: #1c3d33;       --pill-java-text: #7fd9b8;
+  --pill-javascript-bg: #3d2230; --pill-javascript-text: #e896b8;
+  --pill-python-bg: #262046;     --pill-python-text: #a89af0;
+  --pill-sql-bg: #3d3018;        --pill-sql-text: #e0b968;
+  --pill-swing-bg: #2a2440;      --pill-swing-text: #b3a8f5;
+  --pill-opencv-bg: #1e3040;     --pill-opencv-text: #7ec4e8;
+  --pill-mediapipe-bg: #203828;  --pill-mediapipe-text: #7fd9a0;
+  --pill-mariadb-bg: #332018;    --pill-mariadb-text: #e0a878;
+  --pill-git-bg: #2e2e35;        --pill-git-text: #c4c2bf;
+  --pill-figma-bg: #3d2230;      --pill-figma-text: #e896b8;
+
+  /* Background */
+ --bg-color: #0c0c1d; /* Fondo oscuro (Zinc-950) */
+    /* legacy aliases used by layout and other files */
+  --glow-color: rgba(129, 127, 211, 0.25); /* Morado adaptado a fondo oscuro */
+  --glow-fade: rgba(9, 9, 11, 0);
+}
+
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease;
 }
 
 * {
@@ -16,10 +79,13 @@
   box-sizing: border-box;
 }
 
+
 body {
   width: 100%;
   height: 100%;
   font-family: var(--nunito);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
 }
 
 h1 {
@@ -41,5 +107,48 @@ li {
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--text-primary);
+}
+
+/* Definición de la animación blurred-fade-in */
+@keyframes blurredFadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.96) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Clase de utilidad para aplicar a tus elementos */
+.animate-blurred-fade-in {
+  animation: blurredFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Utilidades de retardo (delays) */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Definición del @keyframes */
+@keyframes slideInTop {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Clase utilitaria */
+.animate-slide-in-top {
+  animation: slideInTop 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
