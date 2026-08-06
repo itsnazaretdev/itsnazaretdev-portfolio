@@ -4,6 +4,8 @@ import CardProject from './CardProject.astro';
 ---
 
 <section id="projects">
+    <h2 class="stack">registro 02 - proyectos</h2>
+
   <ol class="cards">
     {projects.map((p, index) => (
       <CardProject {...p} style={`--card-index: ${index};`} />
@@ -18,6 +20,12 @@ import CardProject from './CardProject.astro';
     padding: 2.5rem 0 8.75rem 0;
     padding-top: 6.5rem;
   }
+
+  h2 {
+        font-family: var(--cascadia);
+        font-weight: 100;
+        font-size: var(--h3);
+    }
 
   .cards {
     padding: 0 0 7.5rem;

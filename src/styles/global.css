@@ -16,21 +16,51 @@
   --text-secondary: #525252;
   --text-muted: #a3a3a3;
   --shadow-color: #0000004d;
+  --separate-lines: #00000014;
+
 
   /* Light theme */
-  --pill-java-bg: #e1f5ee;       --pill-java-text: #085041;
-  --pill-javascript-bg: #fbeaf0; --pill-javascript-text: #72243e;
-  --pill-python-bg: #eeedfe;     --pill-python-text: #3c3489;
-  --pill-sql-bg: #faeeda;        --pill-sql-text: #633806;
-  --pill-swing-bg: #f0edfb;      --pill-swing-text: #4a3d8f;
-  --pill-opencv-bg: #e4f2fa;     --pill-opencv-text: #1c5c80;
-  --pill-mediapipe-bg: #e3f7ea;  --pill-mediapipe-text: #1f6b3d;
-  --pill-mariadb-bg: #faf0e4;    --pill-mariadb-text: #6b4419;
-  --pill-git-bg: #eeeeee;        --pill-git-text: #4a4a4a;
-  --pill-figma-bg: #fbeaf0;      --pill-figma-text: #72243e;
+ --pill-java-bg: #fff0ea;
+--pill-java-text: #c4431f;
+
+--pill-javascript-bg: #fff8d6;
+--pill-javascript-text: #ab9609;
+
+--pill-python-bg: #e8f2ff;
+--pill-python-text: #417095;
+
+--pill-sql-bg: #e6f7ff;
+--pill-sql-text: #336791;
+
+--pill-astro-bg: #f2e8ff;
+--pill-astro-text: #6b3fc4;
+
+--pill-swing-bg: #f4ffd9;
+--pill-swing-text: #637e10;
+
+--pill-opencv-bg: #e9f7ef;
+--pill-opencv-text: #2e8b57;
+
+--pill-mediapipe-bg: #fff1e5;
+--pill-mediapipe-text: #ff6f00;
+
+--pill-postgresql-bg: #e6ecff;
+--pill-postgresql-text: #255f8e;
+
+--pill-mariadb-bg: #f8efe6;
+--pill-mariadb-text: #6d4c41;
+
+--pill-git-bg: #ededec;
+--pill-git-text: #454545;
+
+--pill-figma-bg: #f5e8ff;
+--pill-figma-text: #a259ff;
+
+--pill-apirest-bg: #ffebf7;
+--pill-apirest-text: #831d68;
 
   /* Background */
---bg-color: #f5f5f5;
+--bg-color: #ffffff;
   /* legacy aliases used by layout and other files */
   --glow-color: rgba(43, 40, 188, 0.3); /* Morado sutil */
   --glow-fade: rgba(255, 255, 255, 0);
@@ -47,18 +77,49 @@
   --text-primary: #f4f4f5; /* texto principal, blanco roto, no puro */
   --text-secondary: #a1a1aa;/* párrafos, descripciones */
   --text-muted: #63636b;/* metadata, labels discretos */
-  --shadow-color: rgba(0, 0, 0, 0.516);/* para sombras/glow sutiles en hover */
+  --shadow-color: #00000084;/* para sombras/glow sutiles en hover */
+  --separate-lines: #a4a4a42f;
 
-  --pill-java-bg: #1c3d33;       --pill-java-text: #7fd9b8;
-  --pill-javascript-bg: #3d2230; --pill-javascript-text: #e896b8;
-  --pill-python-bg: #262046;     --pill-python-text: #a89af0;
-  --pill-sql-bg: #3d3018;        --pill-sql-text: #e0b968;
-  --pill-swing-bg: #2a2440;      --pill-swing-text: #b3a8f5;
-  --pill-opencv-bg: #1e3040;     --pill-opencv-text: #7ec4e8;
-  --pill-mediapipe-bg: #203828;  --pill-mediapipe-text: #7fd9a0;
-  --pill-mariadb-bg: #332018;    --pill-mariadb-text: #e0a878;
-  --pill-git-bg: #2e2e35;        --pill-git-text: #c4c2bf;
-  --pill-figma-bg: #3d2230;      --pill-figma-text: #e896b8;
+
+--pill-java-bg: #4a2418;
+--pill-java-text: #f2a17d;
+
+--pill-javascript-bg: #4a430f;
+--pill-javascript-text: #e8d01c;
+
+--pill-python-bg: #1d3557;
+--pill-python-text: #8ec5ff;
+
+--pill-sql-bg: #1e3654;
+--pill-sql-text: #7db4e6;
+
+--pill-astro-bg: #2b1d44;
+--pill-astro-text: #c4a3ff;
+
+--pill-swing-bg: #243517;
+--pill-swing-text: #91d272;
+
+--pill-opencv-bg: #173528;
+--pill-opencv-text: #72d29a;
+
+--pill-mediapipe-bg: #4a2f12;
+--pill-mediapipe-text: #ffb366;
+
+--pill-postgresql-bg: #1e2a54;
+--pill-postgresql-text: #7da7e6;
+
+--pill-mariadb-bg: #3a281f;
+--pill-mariadb-text: #d9b08c;
+
+--pill-git-bg: #333333;
+--pill-git-text: #b9b9b9;
+
+--pill-figma-bg: #3a2048;
+--pill-figma-text: #d3a6ff;
+
+
+--pill-apirest-bg: #4b203a;
+--pill-apirest-text: #e09dcf;
 
   /* Background */
  --bg-color: #0c0c1d; /* Fondo oscuro (Zinc-950) */
@@ -90,14 +151,6 @@ body {
 
 h1 {
   font-size: var(--h1);
-}
-
-h2 {
-  font-size: var(--h2);
-}
-
-h3 {
-  font-size: var(--h3);
 }
 
 p,

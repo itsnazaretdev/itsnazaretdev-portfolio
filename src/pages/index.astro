@@ -3,6 +3,10 @@ import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
 import Projects from '../components/Projects.astro';
+import Skills from "../components/Skills.astro";
+
+import { stack } from "../data/stack";
+import { skills } from "../data/skills";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -13,5 +17,17 @@ import Projects from '../components/Projects.astro';
 	<Hero />
 	<main>
 		<Projects />
+
+		<div class="skills">
+			<Skills title="registro 03 - stack técnico" groups={stack} variant='pill'/>
+			<Skills title='registro 04 - habilidades' groups={skills} variant='list'/>
+		</div>
 	</main>
 </Layout>
+
+<style>
+	.skills {
+		display: flex;
+		
+	}
+</style>

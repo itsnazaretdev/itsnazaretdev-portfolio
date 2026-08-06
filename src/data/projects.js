@@ -35,7 +35,7 @@ export const projects = [
     urlRepo: "https://github.com/tu-usuario/biblioteca"
   },
   {
-   number: 3,
+   number: 4,
     title: "Mi Biblioteca Personal",
     description: "Gestor de libros de escritorio en Java Swing. Cataloga tu biblioteca, busca libros con una API externa y organiza por categorías con tema claro/oscuro.",
     listItems: [
@@ -48,7 +48,7 @@ export const projects = [
     urlRepo: "https://github.com/tu-usuario/biblioteca"
   },
   {
-   number: 3,
+   number: 5,
     title: "Mi Biblioteca Personal",
     description: "Gestor de libros de escritorio en Java Swing. Cataloga tu biblioteca, busca libros con una API externa y organiza por categorías con tema claro/oscuro.",
     listItems: [
@@ -61,3 +61,4 @@ export const projects = [
     urlRepo: "https://github.com/tu-usuario/biblioteca"
   }
 ];
+

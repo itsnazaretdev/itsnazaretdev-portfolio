@@ -1,0 +1,108 @@
+---
+import Pill from "./Pill.astro";
+
+interface Group {
+  category: string;
+  items: string[];
+}
+
+interface Props {
+  title: string;
+  groups: Group[];
+  variant?: "pill" | "list";
+}
+
+const { title, groups, variant = "pill" } = Astro.props;
+---
+
+<section class={variant}>
+  <h2>{title}</h2>
+
+  <div class={`skills-groups ${variant}`}>
+    {groups.map((group) => (
+      <div class="group">
+        <h3 class="group-label">{group.category}</h3>
+
+        <ul class={`skills-list ${variant}`}>
+          {group.items.map((item) => (
+            <li>
+              {variant === "pill" ? <Pill name={item} /> : item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+    section {
+  width: 65%;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  
+    }
+
+    section.list {
+        margin-top: 6rem;
+    }
+
+h2 {
+  font-family: var(--cascadia);
+  font-weight: 100;
+  font-size: var(--h3);
+}
+
+/* Stack */
+.skills-groups {
+  display: flex;
+  flex-direction: column;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.group-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  list-style: none;
+}
+
+/* Skills */
+.skills-groups.list {
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.skills-groups.list .group {
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: none;
+  padding: 0;
+}
+
+.skills-list.list {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .5rem;
+}
+
+.skills-list.list li {
+  list-style: none;
+}
+</style>
