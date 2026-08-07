@@ -65,19 +65,22 @@
   --glow-color: rgba(43, 40, 188, 0.3); /* Morado sutil */
   --glow-fade: rgba(255, 255, 255, 0);
 
+  --under-1: #9a741d;
+  --under-2: #9a1d68;
+  --under-3: #1d799a;
   
 }
 
 /* Dark theme */
 .dark {
-  --surface: #292d38;         /* fondo de cards, un escalón más claro */
+  --surface: #101927;         /* fondo de cards, un escalón más claro */
   --surface-hover: #1c1c1f; /* hover de cards/elementos interactivos */
   --border: #232326; /* bordes sutiles */
   --border-strong: #303033; /* bordes con más presencia, dividers */
   --text-primary: #f4f4f5; /* texto principal, blanco roto, no puro */
   --text-secondary: #a1a1aa;/* párrafos, descripciones */
   --text-muted: #63636b;/* metadata, labels discretos */
-  --shadow-color: #00000084;/* para sombras/glow sutiles en hover */
+  --shadow-color: #000000;/* para sombras/glow sutiles en hover */
   --separate-lines: #a4a4a42f;
 
 
@@ -122,10 +125,15 @@
 --pill-apirest-text: #e09dcf;
 
   /* Background */
- --bg-color: #141425; /* Fondo oscuro (Zinc-950) */
+ --bg-color: #111c2d; /* Fondo oscuro (Zinc-950) */
     /* legacy aliases used by layout and other files */
   --glow-color: rgba(117, 115, 255, 0.25); /* Morado adaptado a fondo oscuro */
   --glow-fade: rgba(9, 9, 11, 0);
+
+  --under-1: #dbbf7e;
+  --under-2: #f1b5d9;
+  --under-3: #ace2f6;
+
 }
 
 *,
@@ -152,6 +160,12 @@ body {
 h1 {
   font-size: var(--h1);
 }
+
+h2 {
+        font-family: var(--cascadia);
+        font-weight: 100;
+        font-size: var(--h3);
+    }
 
 p,
 li {

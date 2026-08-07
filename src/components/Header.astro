@@ -1,14 +1,15 @@
-
+---
+import { navLinks } from "../data/nav";
+---
 <header>
     <a href="#hero"><img src="/src/assets/icoLight.png" alt="Logo portfolio NZ" class="logo-light"></a>
     <a href="#hero"><img src="/src/assets/icoDark.png" alt="Logo portfolio NZ" class="logo-dark"></a>
 
     <nav>
         <ul>
-            <li><a href="#projects">Proyectos</a></li>
-            <li><a href="">Skills</a></li>
-            <li><a href="">Sobre mí</a></li>
-            <li><a href="">Contacto</a></li>
+            {navLinks.map((link) => (
+      <li><a href={link.href}>{link.label}</a></li>
+    ))}
         </ul>
     </nav>
 

@@ -1,0 +1,31 @@
+<footer>
+    <h2>registro 06 - Contacto</h2>
+    <h3>Hablemos</h3>
+    <p>Si buscas a alguien para prácticas o simplemente quieres saludar, aquí me puedes encontrar.</p>
+
+    <a class="email-link" href="#">Escríbeme</a>
+    <a class="github-link" href="https://github.com/itsnazaretdev">GitHub</a>
+    <a class="linkedin-link" href="#">LinkedIn</a>
+
+    <p>itsnazaretdev - 2026</p>
+</footer>
+
+<style>
+    footer {
+        width: 65%;
+        margin: 0 auto;
+    }
+</style>
+
+<script>
+  const user = 'nazaretgutirrezmartn';
+  const domain = 'gmail.com';
+  const email = `${user}@${domain}`;
+
+  const link = document.querySelector('.email-link') as HTMLAnchorElement;
+
+  if (link) {
+    link.href = `mailto:${email}`;
+    link.textContent = email;
+  }
+</script>
