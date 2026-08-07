@@ -2,7 +2,7 @@
   --h1: clamp(2.3rem, 6vw, 4rem);
   --h2: clamp(1.4rem, 3vw, 2.4rem);
   --h3: clamp(1.05rem, 2vw, 1.2rem);
-  --btn-theme: clamp(1.1rem, 1.2vw, 1.2rem);
+  --btn-theme: clamp(1.5rem, 2vw, 1.2rem);
   --text: clamp(0.9rem, 0.95vw, 0.95rem);
 
   --cascadia: 'Cascadia Code Variable', sans-serif;
@@ -70,7 +70,7 @@
 
 /* Dark theme */
 .dark {
-  --surface: #212531;         /* fondo de cards, un escalón más claro */
+  --surface: #292d38;         /* fondo de cards, un escalón más claro */
   --surface-hover: #1c1c1f; /* hover de cards/elementos interactivos */
   --border: #232326; /* bordes sutiles */
   --border-strong: #303033; /* bordes con más presencia, dividers */
@@ -122,9 +122,9 @@
 --pill-apirest-text: #e09dcf;
 
   /* Background */
- --bg-color: #0c0c1d; /* Fondo oscuro (Zinc-950) */
+ --bg-color: #141425; /* Fondo oscuro (Zinc-950) */
     /* legacy aliases used by layout and other files */
-  --glow-color: rgba(129, 127, 211, 0.25); /* Morado adaptado a fondo oscuro */
+  --glow-color: rgba(117, 115, 255, 0.25); /* Morado adaptado a fondo oscuro */
   --glow-fade: rgba(9, 9, 11, 0);
 }
 
