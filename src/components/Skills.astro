@@ -15,7 +15,7 @@ interface Props {
 const { title, groups, variant = "pill" } = Astro.props;
 ---
 
-<section class={variant}>
+<div class={`skills ${variant}`}>
   <h2>{title}</h2>
 
   <div class={`skills-groups ${variant}`}>
@@ -33,21 +33,22 @@ const { title, groups, variant = "pill" } = Astro.props;
       </div>
     ))}
   </div>
-</section>
+</div>
 
 <style>
-    section {
-        width: 100%;
+    .skills {
+    width: 55%;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-    }
+}
 
 
 /* Stack */
 .skills-groups {
   display: flex;
   flex-direction: column;
+
 }
 
 .group {
@@ -60,8 +61,7 @@ const { title, groups, variant = "pill" } = Astro.props;
 .group-label {
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--text-primary);
-  margin: 0;
+  color: var(--text-primary); 
 }
 
 .skills-list {

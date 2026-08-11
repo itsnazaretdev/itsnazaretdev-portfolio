@@ -1,0 +1,63 @@
+---
+interface Props {
+  icon: any;
+  label: string;
+  href?: string;
+  emailUser?: string;
+  emailDomain?: string;
+}
+
+const {
+  icon: Icon,
+  label,
+  href,
+  emailUser,
+  emailDomain
+} = Astro.props;
+
+const isEmail = !!emailUser && !!emailDomain;
+---
+
+<a
+  class="social-link"
+  href={isEmail ? "#" : href}
+  target={isEmail ? undefined : "_blank"}
+  rel={isEmail ? undefined : "noopener noreferrer"}
+  data-email-user={emailUser}
+  data-email-domain={emailDomain}
+>
+  <Icon />
+  <span class="email-text">{label}</span>
+</a>
+
+<style>
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border: 1px solid var(--text-secondary);
+    padding: 1rem;
+    width: 25rem;
+    border-radius: .6rem;
+  }
+
+  .social-link svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+</style>
+
+<script>
+  const link = document.querySelector("[data-email-user]") as HTMLAnchorElement;
+
+  if (link) {
+    const user = link.dataset.emailUser;
+    const domain = link.dataset.emailDomain;
+
+    if (user && domain) {
+      const email = `${user}@${domain}`;
+
+      link.href = `mailto:${email}`;
+    }
+  }
+</script>
