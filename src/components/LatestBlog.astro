@@ -1,0 +1,161 @@
+---
+import Button from "./Button.astro";
+import Pill from "./Pill.astro";
+
+interface BlogPost {
+  title: string;
+  description: string;
+  date: string;
+  tag: string;
+  url: string;
+}
+
+let post: BlogPost | null = null;
+
+try {
+  const response = await fetch(
+    'https://bit-a-bitacora.vercel.app/api/latest.json'
+  );
+
+  if (response.ok) {
+    post = await response.json();
+  }
+} catch (error) {
+  console.error('No se pudo cargar la última entrada del blog:', error);
+}
+---
+
+{post && (
+  <section class="latest-blog" id="blog">
+    <h2 class="section-title">Registro 06 - Blog</h2>
+    <span class="blog-label">✦ ÚLTIMO ARTÍCULO</span>
+
+    <div class="blog-card">
+      <div class="blog-header">
+        <Pill name={post.tag} />
+        <span class="blog-date">
+          {new Date(post.date).toLocaleDateString('es-ES', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+          })}
+        </span>
+      </div>
+
+      <h3>{post.title}</h3>
+
+      {post.description && <p>{post.description}</p>}
+
+      <a href={post.url} class="read-more" target="_blank" rel="noopener noreferrer"> <Button name="Leer artículo →" class="btn-project"></Button></a>
+    </div>
+  </section>
+)}
+
+<style>
+ .latest-blog {
+  max-width: 55%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.blog-label {
+  font-family: var(--cascadia);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+}
+
+.blog-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+    transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+    transform-origin: center bottom;
+
+}
+
+.blog-card:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.read-more::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-tag {
+  font-family: var(--cascadia);
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
+}
+
+.blog-date {
+  font-family: var(--cascadia);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.blog-card h3 {
+  font-size: 1.4rem;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.blog-card p {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 480px;
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0.4rem;
+  font-family: var(--cascadia);
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.read-more span {
+  transition: transform 0.2s ease;
+}
+
+.read-more:hover span {
+  transform: translateX(4px);
+}
+
+@media (max-width: 680px) {
+  .blog-card {
+    padding: 1.4rem;
+  }
+
+  .blog-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+</style>

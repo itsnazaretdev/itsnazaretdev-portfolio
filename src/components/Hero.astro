@@ -1,18 +1,27 @@
 ---
 import Button from "./Button.astro"
+import GmailIcon from "./icons/GmailIcon.astro"
+import LinkedInIcon from "./icons/LinkedInIcon.astro"
+import GitHubIcon from "./icons/GitHubIcon.astro"
+import SocialMedia from "./SocialMedia.astro"
 ---
 
 <section id="hero">
-    <img class="animate-slide-in-top" src="/src/assets/logo.png" alt="Personal image">
+    <img class="animate-slide-in-top" src="/logo-me.png" alt="Personal image">
 
     <div class="info">
         <h2>Registro 01 — Desarrolladora DAW</h2>
         <h1 class="animate-blurred-fade-in">Nazaret</h1>
         <p class="animate-blurred-fade-in delay-200">Construyo aplicaciones con la misma atencion al detalle con la que organizo una estanteria: cada pieza en su sitio, cada dato con su etiqueta.</p>
         
-        <div class="btns animate-blurred-fade-in delay-400">
-            <a href="#projects"><Button name="Ver proyectos ->" class="btn-project"/></a>
-            <a href="#contact"><Button name="Contacto" class="btn-contact"/></a>
+        <div class="btns animate-blurred-fade-in delay-400"> 
+            <div class="social-links"> 
+                <SocialMedia icon={GitHubIcon} label="GitHub" href="https://github.com/..." /> 
+                <SocialMedia icon={LinkedInIcon} label="LinkedIn" href="https://linkedin.com/..." /> 
+                <SocialMedia icon={GmailIcon} label="Escríbeme" emailUser="nazaretgutirrezmartn" emailDomain="gmail.com" /> 
+            </div> 
+            
+            <a href="#projects"> <Button name="Ver proyectos ->" class="btn-project" /></a> 
         </div>
     </div>
     
@@ -54,8 +63,16 @@ import Button from "./Button.astro"
         object-fit: cover;
     }
 
-    .btns {
-        display: flex;
-        gap: 1rem;
+    .btns { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 1rem; 
+    } 
+    
+    .social-links { 
+        display: flex; 
+        align-items: center; 
+        gap: 1rem; 
     }
 </style>

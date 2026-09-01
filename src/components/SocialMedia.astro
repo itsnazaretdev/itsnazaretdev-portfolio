@@ -27,7 +27,6 @@ const isEmail = !!emailUser && !!emailDomain;
   data-email-domain={emailDomain}
 >
   <Icon />
-  <span class="email-text">{label}</span>
 </a>
 
 <style>
@@ -35,10 +34,7 @@ const isEmail = !!emailUser && !!emailDomain;
     display: flex;
     align-items: center;
     gap: .5rem;
-    border: 1px solid var(--text-secondary);
-    padding: 1rem;
-    width: 25rem;
-    border-radius: .6rem;
+    
   }
 
   .social-link svg {
