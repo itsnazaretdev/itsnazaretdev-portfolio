@@ -28,7 +28,7 @@ try {
 {post && (
   <section class="latest-blog" id="blog">
     <h2 class="section-title">Registro 06 - Blog</h2>
-    <span class="blog-label">✦ ÚLTIMO ARTÍCULO</span>
+    <p class="blog-label"><span class="star">✦</span> ÚLTIMO ARTÍCULO</p>
 
     <div class="blog-card">
       <div class="blog-header">
@@ -58,6 +58,11 @@ try {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  background-color: var(--surface);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px -10px 10px -10px var(--shadow-color);
+  
 }
 
 .blog-label {
@@ -66,24 +71,18 @@ try {
   letter-spacing: 0.08em;
 }
 
+.star {
+  font-size: 1.5rem;
+}
+
 .blog-card {
   position: relative;
-  border: 1px solid var(--border);
+  border: 1px solid var(--text-secondary);
   border-radius: 10px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-    transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-    transform-origin: center bottom;
-
-}
-
-.blog-card:hover {
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .read-more::after {
@@ -137,14 +136,6 @@ try {
   font-size: 0.8rem;
   color: var(--text-primary);
   text-decoration: none;
-}
-
-.read-more span {
-  transition: transform 0.2s ease;
-}
-
-.read-more:hover span {
-  transform: translateX(4px);
 }
 
 @media (max-width: 680px) {

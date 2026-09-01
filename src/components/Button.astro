@@ -10,6 +10,7 @@ const { name, class: className } = Astro.props;
         font-family: var(--cascadia);
         border-radius: 0.3rem;
         border: none;
+        transition: transform 0.2s ease;
     }
     
     .btn-project {
@@ -22,5 +23,9 @@ const { name, class: className } = Astro.props;
         color: var(--text-primary);
         background-color: var(--surface);
         border: 1px solid var(--border);
+    }
+
+    button:hover {
+        transform: translateX(4px);
     }
 </style>
