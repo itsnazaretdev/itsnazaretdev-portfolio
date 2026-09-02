@@ -1,3 +1,7 @@
+import proy1 from "../assets/imgProjects/screenshotLight.webp";
+import proy2 from "../assets/imgProjects/backgrounds.webp";
+import contrastExtension from "../assets/imgProjects/extension.webp"
+
 export const projects = [
   {
     number: 1,
@@ -8,57 +12,37 @@ export const projects = [
       "Caché local de portadas",
       "Arquitectura en capas"
     ],
-    img: "/src/assets/imgProjects/screenshotLight.webp",
+    img: proy1,
     pills: ["java", "swing", "api rest"],
-    urlRepo: "https://github.com/tu-usuario/biblioteca"
+    urlRepo: "https://github.com/itsnazaretdev/miBibliotecaApp"
   },
   {
-    number: 2,
-    title: "Detección con visión",
-    description: "Detección de manos en tiempo real usando OpenCV y MediaPipe.",
-    listItems: ["Procesamiento en tiempo real", "Reconocimiento de gestos"],
-    img: "/src/assets/imgProjects/screenshotLight.webp",
-    pills: ["python", "opencv"],
-    urlRepo: "https://github.com/tu-usuario/vision"
+    
+  number: 2,
+  title: "Contrast Checker",
+  description: "Extensión para Visual Studio Code que permite comprobar al instante el contraste entre colores y verificar su cumplimiento con los criterios de accesibilidad WCAG 2.1.",
+  listItems: [
+    "Soporte para colores HEX, RGB y HSL",
+    "Informe de cumplimiento AA y AAA para texto normal y grande",
+    "Resultados directamente en el panel Output de VS Code"
+  ],
+  img: contrastExtension,
+  pills: ["javascript", "wcag", "accessibility"],
+  urlRepo: "https://github.com/itsnazaretdev/contrastExtension"
   },
   {
-   number: 3,
-    title: "Mi Biblioteca Personal",
-    description: "Gestor de libros de escritorio en Java Swing. Cataloga tu biblioteca, busca libros con una API externa y organiza por categorías con tema claro/oscuro.",
+     number: 3,
+    title: "Collectable Colors",
+    description: "Galería de fondos CSS y Tailwind listos para copiar y usar, con vista previa en web simulada y variantes claro/oscuro para cada uno.",
     listItems: [
-      "Integración con Google Books API",
-      "Caché local de portadas",
-      "Arquitectura en capas"
+      "Fondos en CSS puro y como utilidad de Tailwind",
+      "Vista previa en un layout completo",
+      "Variantes light y dark pensadas como opuestos para un tema completo"
     ],
-    img: "/src/assets/imgProjects/screenshotLight.webp",
-    pills: ["java", "swing", "api rest"],
-    urlRepo: "https://github.com/tu-usuario/biblioteca"
+    img: proy2,
+    pills: ["astro", "tailwindcss", "css"],
+    urlRepo: "https://github.com/itsnazaretdev/collectable-colors"
   },
-  {
-   number: 4,
-    title: "Mi Biblioteca Personal",
-    description: "Gestor de libros de escritorio en Java Swing. Cataloga tu biblioteca, busca libros con una API externa y organiza por categorías con tema claro/oscuro.",
-    listItems: [
-      "Integración con Google Books API",
-      "Caché local de portadas",
-      "Arquitectura en capas"
-    ],
-    img: "/src/assets/imgProjects/screenshotLight.webp",
-    pills: ["java", "swing", "api rest"],
-    urlRepo: "https://github.com/tu-usuario/biblioteca"
-  },
-  {
-   number: 5,
-    title: "Mi Biblioteca Personal",
-    description: "Gestor de libros de escritorio en Java Swing. Cataloga tu biblioteca, busca libros con una API externa y organiza por categorías con tema claro/oscuro.",
-    listItems: [
-      "Integración con Google Books API",
-      "Caché local de portadas",
-      "Arquitectura en capas"
-    ],
-    img: "/src/assets/imgProjects/screenshotLight.webp",
-    pills: ["java", "swing", "api rest"],
-    urlRepo: "https://github.com/tu-usuario/biblioteca"
-  }
+  
 ];
 

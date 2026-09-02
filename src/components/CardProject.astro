@@ -7,7 +7,7 @@ interface Props {
   title: string;
   description: string;
   listItems: string[];
-  img: string;
+  img: ImageMetadata;
   pills: string[];
   urlRepo: string;
   style?: string;
@@ -21,7 +21,7 @@ const { number, title, description, listItems = [], img, pills = [], urlRepo, st
 
     <article>
         <figure>
-            <img src={img} alt={`Captura de ${title}`} />
+            <img src={img.src} alt={`Captura de ${title}`} />
         </figure>
 
         <div class="info-project">
