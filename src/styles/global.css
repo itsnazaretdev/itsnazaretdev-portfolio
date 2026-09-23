@@ -59,6 +59,12 @@
 --pill-apirest-bg: #ffebf7;
 --pill-apirest-text: #831d68;
 
+--pill-reflexion-bg: #e3f7f5;
+--pill-reflexion-text: #0e7c72;
+
+--pill-accesibilidad-bg: #eef0ff;
+--pill-accesibilidad-text: #4338ca;
+
   /* Background */
 --bg-color: #ffffff;
   /* legacy aliases used by layout and other files */
@@ -125,6 +131,12 @@
 
 --pill-apirest-bg: #4b203a;
 --pill-apirest-text: #e09dcf;
+
+--pill-reflexion-bg: #163a37;
+--pill-reflexion-text: #6fe3d4;
+
+--pill-accesibilidad-bg: #23234a;
+--pill-accesibilidad-text: #a5b4fc;
 
   /* Background */
  --bg-color: #111c2d; /* Fondo oscuro (Zinc-950) */
