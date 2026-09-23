@@ -65,6 +65,15 @@
 --pill-accesibilidad-bg: #eef0ff;
 --pill-accesibilidad-text: #4338ca;
 
+--pill-wcag-bg: #e7f6ec;
+--pill-wcag-text: #1e7a3e;
+
+--pill-tailwindcss-bg: #e0f7fc;
+--pill-tailwindcss-text: #0e7490;
+
+--pill-css-bg: #e8eeff;
+--pill-css-text: #264de4;
+
   /* Background */
 --bg-color: #ffffff;
   /* legacy aliases used by layout and other files */
@@ -137,6 +146,15 @@
 
 --pill-accesibilidad-bg: #23234a;
 --pill-accesibilidad-text: #a5b4fc;
+
+--pill-wcag-bg: #173a24;
+--pill-wcag-text: #7ee2a0;
+
+--pill-tailwindcss-bg: #123a45;
+--pill-tailwindcss-text: #67e8f9;
+
+--pill-css-bg: #1a2a5e;
+--pill-css-text: #8fa8ff;
 
   /* Background */
  --bg-color: #111c2d; /* Fondo oscuro (Zinc-950) */
