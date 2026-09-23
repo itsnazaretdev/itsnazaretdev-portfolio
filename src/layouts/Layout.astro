@@ -38,8 +38,15 @@ import "../styles/global.css";
 		const endY = target.getBoundingClientRect().top + window.scrollY - offset;
 		history.pushState(null, "", `#${id}`);
 
+		// Como en un enlace nativo, el foco pasa a la sección (teclado y lectores de pantalla)
+		const moveFocus = () => {
+			if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+			target.focus({ preventScroll: true });
+		};
+
 		if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 			window.scrollTo(0, endY);
+			moveFocus();
 			return;
 		}
 
@@ -53,8 +60,12 @@ import "../styles/global.css";
 		const step = (now: number) => {
 			const progress = Math.min((now - start) / DURATION, 1);
 			window.scrollTo(0, startY + distance * easeInOutCubic(progress));
-			if (progress < 1) requestAnimationFrame(step);
-			else document.documentElement.style.scrollBehavior = "";
+			if (progress < 1) {
+				requestAnimationFrame(step);
+			} else {
+				document.documentElement.style.scrollBehavior = "";
+				moveFocus();
+			}
 		};
 		requestAnimationFrame(step);
 	});
@@ -67,6 +78,11 @@ import "../styles/global.css";
 		width: 100%;
 		height: 100%;
 		color-scheme: light dark;
+	}
+
+	/* Secciones enfocadas por los enlaces del menú: sin anillo al usar ratón */
+	[tabindex="-1"]:focus:not(:focus-visible) {
+		outline: none;
 	}
 
 	body {
