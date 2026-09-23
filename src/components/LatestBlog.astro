@@ -62,7 +62,7 @@ try {
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0px -10px 10px -10px var(--shadow-color);
-  
+  scroll-margin-top: var(--header-height);
 }
 
 .blog-label {
@@ -97,15 +97,6 @@ try {
   align-items: center;
 }
 
-.blog-tag {
-  font-family: var(--cascadia);
-  font-size: 0.7rem;
-  padding: 3px 10px;
-  border-radius: 100px;
-  border: 1px solid var(--border-strong);
-  color: var(--text-secondary);
-}
-
 .blog-date {
   font-family: var(--cascadia);
   font-size: 0.75rem;
@@ -136,6 +127,13 @@ try {
   font-size: 0.8rem;
   color: var(--text-primary);
   text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .latest-blog {
+    max-width: calc(100% - 2rem);
+    padding: 1.4rem;
+  }
 }
 
 @media (max-width: 680px) {

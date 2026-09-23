@@ -9,7 +9,7 @@
             <p>Ahora empezaré segundo de DAW, con las prácticas como siguiente parada. Después de eso, <span class="underline-3">el objetivo es sencillo</span>: seguir construyendo cosas, entrar a trabajar en esto de verdad, y no dejar nunca de aprender por el camino.</p>
         </div>
     
-            <img src="/logo-me.png" alt="Personal image">
+            <img src="/logo-me.png" alt="Ilustración de Nazaret sonriendo, con gafas y pelo largo castaño">
 
     </div>
 
@@ -26,6 +26,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 4rem;
     }
 
     .underline-1 {
@@ -46,7 +47,23 @@
 
     img {
         width: 16rem;
+        flex-shrink: 0;
         object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+        section {
+            width: calc(100% - 2rem);
+        }
+
+        .about {
+            flex-direction: column-reverse;
+            gap: 2rem;
+        }
+
+        img {
+            width: 12rem;
+        }
     }
 
 </style>

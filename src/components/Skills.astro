@@ -36,8 +36,8 @@ const { title, groups, variant = "pill" } = Astro.props;
 </div>
 
 <style>
-    .skills {
-    width: 55%;
+.skills {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
@@ -92,5 +92,12 @@ const { title, groups, variant = "pill" } = Astro.props;
 
 .skills-list.list li {
   list-style: none;
+}
+
+@media (max-width: 680px) {
+  .skills-groups.list {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 }
 </style>
