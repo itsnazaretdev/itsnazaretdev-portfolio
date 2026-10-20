@@ -5,15 +5,15 @@ import { navLinks } from "../data/nav.js";
     <a href="#hero"><img src="/icoLight.png" alt="Logo portfolio NZ" class="logo-light"></a>
     <a href="#hero"><img src="/icoDark.png" alt="Logo portfolio NZ" class="logo-dark"></a>
 
-    <nav>
+    <nav id="site-nav" aria-label="Principal">
         <ul>
-            {navLinks.map((link) => (
-      <li><a href={link.href}>{link.label}</a></li>
+            {navLinks.map((link, i) => (
+      <li style={`--i: ${i};`}><a href={link.href}><span class="nav-num">{String(i + 1).padStart(2, '0')}</span>{link.label}</a></li>
     ))}
         </ul>
     </nav>
 
-    <button>
+    <button class="theme-toggle" aria-label="Cambiar tema">
     
         <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="800" height="800" fill="currentColor"viewBox="0 0 24 24"><path fill="#000" d="M12 22c5.523 0 10-4.477 10-10 0-.463-.694-.54-.933-.143a6.5 6.5 0 1 1-8.924-8.924C12.54 2.693 12.463 2 12 2 6.477 2 2 6.477 2 12s4.477 10 10 10"/></svg>
         
@@ -21,6 +21,11 @@ import { navLinks } from "../data/nav.js";
         
             <svg class="icon icon-sun" fill="currentColor" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="800" height="800" viewBox="0 0 207.628 207.628"><circle cx="103.814" cy="103.814" r="45.868"/><path d="M103.814 157.183c-29.427 0-53.368-23.941-53.368-53.368s23.941-53.368 53.368-53.368 53.368 23.941 53.368 53.368-23.941 53.368-53.368 53.368m0-91.737c-21.156 0-38.368 17.212-38.368 38.368s17.212 38.368 38.368 38.368 38.368-17.212 38.368-38.368-17.212-38.368-38.368-38.368M103.814 39.385a7.5 7.5 0 0 1-7.5-7.5V7.5a7.5 7.5 0 0 1 15 0v24.385a7.5 7.5 0 0 1-7.5 7.5M103.814 207.628a7.5 7.5 0 0 1-7.5-7.5v-24.385a7.5 7.5 0 0 1 15 0v24.385a7.5 7.5 0 0 1-7.5 7.5M200.128 111.314h-24.385a7.5 7.5 0 0 1 0-15h24.385a7.5 7.5 0 0 1 0 15M31.885 111.314H7.5a7.5 7.5 0 0 1 0-15h24.385a7.5 7.5 0 0 1 0 15M154.676 60.452a7.47 7.47 0 0 1-5.303-2.197 7.5 7.5 0 0 1 0-10.606l17.243-17.242a7.5 7.5 0 0 1 10.606 0 7.5 7.5 0 0 1 0 10.606l-17.243 17.242a7.47 7.47 0 0 1-5.303 2.197M35.709 179.419a7.47 7.47 0 0 1-5.303-2.197 7.5 7.5 0 0 1 0-10.606l17.243-17.243a7.5 7.5 0 0 1 10.606 0 7.5 7.5 0 0 1 0 10.606l-17.243 17.243a7.47 7.47 0 0 1-5.303 2.197M171.918 179.419a7.47 7.47 0 0 1-5.303-2.197l-17.243-17.243a7.5 7.5 0 0 1 0-10.606 7.5 7.5 0 0 1 10.606 0l17.243 17.243a7.5 7.5 0 0 1 0 10.606 7.47 7.47 0 0 1-5.303 2.197M52.952 60.452a7.47 7.47 0 0 1-5.303-2.197L30.406 41.013a7.5 7.5 0 0 1 0-10.606 7.5 7.5 0 0 1 10.606 0l17.243 17.242a7.5 7.5 0 0 1 0 10.606 7.47 7.47 0 0 1-5.303 2.197"/></svg>
         
+    </button>
+
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
     </button>
 </header>
 
@@ -107,40 +112,111 @@ import { navLinks } from "../data/nav.js";
   display: block;
 }
 
+    .menu-toggle,
+    .nav-num {
+        display: none;
+    }
+
     @media (max-width: 680px) {
         header {
             padding: 0 1rem;
+            justify-content: space-between;
         }
 
-        nav ul {
-            gap: 1rem;
+        header.menu-open {
+            background-color: var(--bg-color);
         }
 
         img {
             width: 2.4rem;
         }
-    }
 
-    @media (max-width: 420px) {
-        header {
-            padding: 0 0.75rem;
-            gap: 0.5rem;
+        .theme-toggle {
+            margin-left: auto;
+        }
+
+        .menu-toggle {
+            height: 3rem;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .menu-toggle:hover {
+            transform: none;
+        }
+
+        .menu-toggle span {
+            width: 1.4rem;
+            height: 2px;
+            border-radius: 2px;
+            background-color: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        header.menu-open .menu-toggle span:first-child {
+            transform: translateY(4px) rotate(45deg);
+        }
+
+        header.menu-open .menu-toggle span:last-child {
+            transform: translateY(-4px) rotate(-45deg);
+        }
+
+        /* Panel desplegable bajo el header */
+        nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            padding: 0 1rem 1.5rem;
+            background-color: var(--bg-color);
+            border-bottom: 1px dashed var(--border-strong);
+            box-shadow: 0 12px 20px -16px var(--shadow-color);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-0.75rem);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+
+        header.menu-open nav {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
         }
 
         nav ul {
-            gap: 0.75rem;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
         }
 
-        li {
-            font-size: 0.8rem;
+        nav li {
+            border-bottom: 1px solid var(--separate-lines);
+            opacity: 0;
+            transform: translateY(-0.5rem);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transition-delay: calc(var(--i, 0) * 50ms);
         }
 
-        img {
-            width: 2rem;
+        header.menu-open nav li {
+            opacity: 1;
+            transform: none;
         }
 
-        button {
-            width: 2rem;
+        nav a {
+            padding: 1rem 0;
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            font-size: 1rem;
+        }
+
+        .nav-num {
+            display: inline;
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
     }
 
@@ -148,7 +224,7 @@ import { navLinks } from "../data/nav.js";
 
 <script>
    document.addEventListener("DOMContentLoaded", () => {
-    const button = document.querySelector("button");
+    const button = document.querySelector(".theme-toggle");
     const header = document.querySelector("header");
 
     if (button) {
@@ -156,6 +232,33 @@ import { navLinks } from "../data/nav.js";
             const isDark = document.documentElement.classList.toggle("dark");
         });
     }
+
+    const menuButton = document.querySelector(".menu-toggle");
+
+    const setMenu = (open: boolean) => {
+        header?.classList.toggle("menu-open", open);
+        menuButton?.setAttribute("aria-expanded", String(open));
+        menuButton?.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    };
+
+    menuButton?.addEventListener("click", () => {
+        setMenu(!header?.classList.contains("menu-open"));
+    });
+
+    header?.querySelectorAll("nav a").forEach((link) => {
+        link.addEventListener("click", () => setMenu(false));
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && header?.classList.contains("menu-open")) {
+            setMenu(false);
+            (menuButton as HTMLElement | null)?.focus();
+        }
+    });
+
+    document.addEventListener("click", (e) => {
+        if (header && !header.contains(e.target as Node)) setMenu(false);
+    });
 
     if (header) {
         let lastScroll = 0;
@@ -165,7 +268,9 @@ import { navLinks } from "../data/nav.js";
             () => {
                 const currentScroll = window.scrollY;
 
-                if (currentScroll < 80) {
+                if (header.classList.contains("menu-open")) {
+                    header.classList.remove("hidden");
+                } else if (currentScroll < 80) {
                     header.classList.remove("hidden");
                 } else if (currentScroll > lastScroll) {
                     header.classList.add("hidden");
