@@ -36,14 +36,20 @@ import CardProject from './CardProject.astro';
     gap: 3.125rem;
   }
 
-  @media (max-width: 680px) {
+  @media (max-width: 900px) {
     section {
       width: calc(100% - 2rem);
     }
+  }
+
+  @media (max-width: 680px) {
+    section {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
 
     .cards {
-      gap: 0;
-      padding-bottom: 0;
+      gap: 1.5rem;
     }
   }
 </style>
