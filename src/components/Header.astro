@@ -31,6 +31,7 @@ import { navLinks } from "../data/nav.js";
 
 <style>
     header {
+        box-sizing: border-box;
         width: 100%;
         height: 5rem;
         padding: 0 2rem;
@@ -66,15 +67,23 @@ import { navLinks } from "../data/nav.js";
         width: 3rem;
     }
 
+    /* Logo and buttons keep their size; only the nav shrinks */
+    header > a,
+    .theme-toggle,
+    .menu-toggle {
+        flex-shrink: 0;
+    }
+
     nav {
-        width: 100%;
+        flex: 1;
+        min-width: 0;
     }
 
     nav ul {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 3rem;
+        gap: clamp(1rem, 3vw, 3rem);
         list-style: none;
     }
     
@@ -117,7 +126,19 @@ import { navLinks } from "../data/nav.js";
         display: none;
     }
 
-    @media (max-width: 680px) {
+    /* Global button hover moves buttons; the header ones stay still */
+    .theme-toggle:hover,
+    .menu-toggle:hover {
+        transform: none;
+    }
+
+    /* While resizing, no animations: avoids the blink at the breakpoint */
+    header.no-transition,
+    header.no-transition * {
+        transition: none !important;
+    }
+
+    @media (max-width: 1024px) {
         header {
             padding: 0 1rem;
             justify-content: space-between;
@@ -145,10 +166,6 @@ import { navLinks } from "../data/nav.js";
             gap: 6px;
         }
 
-        .menu-toggle:hover {
-            transform: none;
-        }
-
         .menu-toggle span {
             width: 1.4rem;
             height: 2px;
@@ -170,6 +187,8 @@ import { navLinks } from "../data/nav.js";
             position: absolute;
             top: 100%;
             left: 0;
+            width: 100%;
+            box-sizing: border-box;
             padding: 0 1rem 1.5rem;
             background-color: var(--bg-color);
             border-bottom: 1px dashed var(--border-strong);
@@ -258,6 +277,15 @@ import { navLinks } from "../data/nav.js";
 
     document.addEventListener("click", (e) => {
         if (header && !header.contains(e.target as Node)) setMenu(false);
+    });
+
+    let resizeTimer: number | undefined;
+    window.addEventListener("resize", () => {
+        header?.classList.add("no-transition");
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(() => {
+            header?.classList.remove("no-transition");
+        }, 200);
     });
 
     if (header) {
