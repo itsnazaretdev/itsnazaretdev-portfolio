@@ -1,150 +1,81 @@
 ---
 import Button from "./Button.astro";
-import Pill from "./Pill.astro";
-
-interface BlogPost {
-  title: string;
-  description: string;
-  date: string;
-  tag: string;
-  url: string;
-}
-
-let post: BlogPost | null = null;
-
-try {
-  const response = await fetch(
-    'https://bit-a-bitacora.vercel.app/api/latest.json'
-  );
-
-  if (response.ok) {
-    post = await response.json();
-  }
-} catch (error) {
-  console.error('No se pudo cargar la última entrada del blog:', error);
-}
 ---
 
-{post && (
-  <section class="latest-blog" id="blog">
-    <h2 class="section-title">Registro 06 - Blog</h2>
-    <p class="blog-label"><span class="star">✦</span> ÚLTIMO ARTÍCULO</p>
+<!-- Hidden until the post arrives; if the request fails, it stays hidden (same as before) -->
+<section class="latest-blog" id="blog" hidden>
+  <h2 class="section-title">Registro 06 - Blog</h2>
+  <p class="blog-label"><span class="star">✦</span> ÚLTIMO ARTÍCULO</p>
 
-    <div class="blog-card">
-      <div class="blog-header">
-        <Pill name={post.tag} />
-        <span class="blog-date">
-          {new Date(post.date).toLocaleDateString('es-ES', {
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric'
-          })}
-        </span>
-      </div>
-
-      <h3>{post.title}</h3>
-
-      {post.description && <p>{post.description}</p>}
-
-      <a href={post.url} class="read-more" target="_blank" rel="noopener noreferrer"> <Button name="Leer artículo →" class="btn-project"></Button></a>
+  <div class="blog-card">
+    <div class="blog-header">
+      <span class="pill" data-blog-tag></span>
+      <span class="blog-date" data-blog-date></span>
     </div>
-  </section>
-)}
 
-<style>
- .latest-blog {
-  max-width: 55%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  background-color: var(--surface);
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0px -10px 10px -10px var(--shadow-color);
-  scroll-margin-top: var(--header-height);
-}
+    <h3 data-blog-title></h3>
 
-.blog-label {
-  font-family: var(--cascadia);
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-}
+    <p data-blog-description></p>
 
-.star {
-  font-size: 1.5rem;
-}
+    <a
+      href="https://bit-a-bitacora.vercel.app"
+      class="read-more"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-blog-link
+    >
+      <Button name="Leer artículo →" class="btn-project" />
+    </a>
+  </div>
+</section>
 
-.blog-card {
-  position: relative;
-  border: 1px solid var(--text-secondary);
-  border-radius: 10px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.read-more::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-}
-
-.blog-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.blog-date {
-  font-family: var(--cascadia);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.blog-card h3 {
-  font-size: 1.4rem;
-  line-height: 1.3;
-  margin: 0;
-  color: var(--text-primary);
-}
-
-.blog-card p {
-  font-size: 0.85rem;
-  line-height: 1.65;
-  color: var(--text-secondary);
-  margin: 0;
-  max-width: 480px;
-}
-
-.read-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 0.4rem;
-  font-family: var(--cascadia);
-  font-size: 0.8rem;
-  color: var(--text-primary);
-  text-decoration: none;
-}
-
-@media (max-width: 900px) {
-  .latest-blog {
-    max-width: calc(100% - 2rem);
-    padding: 1.4rem;
-  }
-}
-
-@media (max-width: 680px) {
-  .blog-card {
-    padding: 1.4rem;
+<script>
+  interface BlogPost {
+    title: string;
+    description: string;
+    date: string;
+    tag: string;
+    url: string;
   }
 
-  .blog-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  const BLOG_API = "https://bit-a-bitacora.vercel.app/api/latest.json";
+
+  async function loadLatestPost() {
+    const section = document.querySelector<HTMLElement>(".latest-blog");
+    if (!section) return;
+
+    try {
+      const response = await fetch(BLOG_API);
+      if (!response.ok) return;
+
+      const post: BlogPost = await response.json();
+
+      const tag = section.querySelector<HTMLElement>("[data-blog-tag]");
+      const date = section.querySelector<HTMLElement>("[data-blog-date]");
+      const title = section.querySelector<HTMLElement>("[data-blog-title]");
+      const description = section.querySelector<HTMLElement>("[data-blog-description]");
+      const link = section.querySelector<HTMLAnchorElement>("[data-blog-link]");
+
+      if (tag) tag.textContent = post.tag;
+      if (date) {
+        date.textContent = new Date(post.date).toLocaleDateString("es-ES", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        });
+      }
+      if (title) title.textContent = post.title;
+      if (description) {
+        description.textContent = post.description;
+        description.hidden = !post.description;
+      }
+      if (link) link.href = post.url;
+
+      section.hidden = false;
+    } catch (error) {
+      console.error("No se pudo cargar la última entrada del blog:", error);
+    }
   }
-}
-</style>
+
+  loadLatestPost();
+</script>
