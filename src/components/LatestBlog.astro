@@ -79,3 +79,101 @@ import Button from "./Button.astro";
 
   loadLatestPost();
 </script>
+
+<style>
+ .latest-blog {
+  max-width: 55%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: var(--surface);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px -10px 10px -10px var(--shadow-color);
+  scroll-margin-top: var(--header-height);
+}
+
+.blog-label {
+  font-family: var(--cascadia);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+}
+
+.star {
+  font-size: 1.5rem;
+}
+
+.blog-card {
+  position: relative;
+  border: 1px solid var(--text-secondary);
+  border-radius: 10px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.read-more::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-date {
+  font-family: var(--cascadia);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.blog-card h3 {
+  font-size: 1.4rem;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.blog-card p {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 480px;
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0.4rem;
+  font-family: var(--cascadia);
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .latest-blog {
+    max-width: calc(100% - 2rem);
+    padding: 1.4rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .blog-card {
+    padding: 1.4rem;
+  }
+
+  .blog-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+</style>
